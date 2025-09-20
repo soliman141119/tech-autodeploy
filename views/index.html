@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Knowledge Hub</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="dot"></span>Tech Knowledge Hub</div>
+    <div class="search">
+      <input id="search" placeholder="Quick filter (title only)..." oninput="filterNav(this.value)"/>
+    </div>
+    <nav class="nav">
+      <h2>Topics</h2>
+      <button id="btn-linux" onclick="showTopic('linux')">🐧 Linux</button>
+      <button id="btn-docker" onclick="showTopic('docker')">🐳 Docker</button>
+      <button id="btn-kubernetes" onclick="showTopic('kubernetes')">⚓ Kubernetes</button>
+      <button id="btn-jenkins" onclick="showTopic('jenkins')">🤖 Jenkins</button>
+      <button id="btn-aws" onclick="showTopic('aws')">☁️ AWS</button>
+
+    </nav>
+  </aside>
+
+  <main class="content">
+
+  
+    <!-- Linux Content -->
+    <section id="linux" class="topic active">
+      <div class="card banner">
+        
+<svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-label="Linux">
+  <circle cx="36" cy="36" r="34" fill="#222"/>
+  <path d="M36 16c7 0 12 6 12 13 0 4-2 8-5 10 2 1 4 3 5 6 2 4 1 9-2 12-4 4-11 4-15 0-3-3-4-8-2-12 1-3 3-5 5-6-3-2-5-6-5-10 0-7 5-13 12-13z" fill="#fff"/>
+  <circle cx="31" cy="28" r="3" fill="#222"/><circle cx="41" cy="28" r="3" fill="#222"/>
+</svg>
+
+        <div>
+          <h1>Linux</h1>
+          <div class="muted">Guides, commands, and best practices</div>
+        </div>
+      </div>
+      <div class="card">
+         <pre>
+A Comprehensive Guide to Linux: From Novice to Power User
+
+Part 1: The Linux Basics
+
+Understanding the Linux Philosophy
+
+Open-Source Nature: Linux is freely available, allowing users to modify and distribute it.
+Community-Driven Development: A vast community of developers continually improves Linux.
+Security: Linux is renowned for its robust security features.
+
+Getting Started
+
+Choosing a Distribution: Select a distribution that suits your needs, such as Ubuntu, Fedora, or Debian.
+Navigating the Terminal: Learn essential commands like cd, ls, mkdir, rm, cp, and mv to interact with the file system.
+Understanding File Permissions: Grasp the concept of file permissions (read, write, execute) and use chmod and chown to manage them.
+
+Package Management
+
+Using Package Managers: Utilize package managers like apt, yum, or dnf to install, update, and remove software.
+Installing Software: Learn how to install software from repositories and build it from source code.
+
+Text Editors
+
+Vim: Master the powerful text editor Vim to efficiently edit files.
+Nano: Use the user-friendly Nano editor for simple text editing.
+
+Part 2: Intermediate Linux
+
+Shell Scripting
+
+Automate Tasks: Write shell scripts to automate repetitive tasks.
+Control Flow: Use if, else, for, and while loops to control the flow of your scripts.
+Variables and Functions: Define variables to store data and create functions to modularize your scripts.
+
+User Management
+
+Creating Users: Add new users to your system.
+Setting Permissions: Assign permissions to users and groups.
+Managing Groups: Create and manage groups to organize users.
+
+Process Management
+
+Monitoring Processes: Use top, htop, and ps to monitor system processes.
+Killing Processes: Terminate unwanted processes with the kill command.
+Resource Management: Manage system resources like CPU and memory.
+
+Networking
+
+Configuring Network Interfaces: Set up network interfaces using ifconfig or ip.
+Using Network Tools: Utilize tools like ping, nslookup, and netstat to troubleshoot network issues.
+Setting Up Servers: Configure web servers (Apache, Nginx), FTP servers, and SSH servers.
+
+System Administration
+
+System Configuration: Edit configuration files in /etc to customize your system.
+System Logging: Analyze system logs to identify and troubleshoot issues.
+Backup and Restore: Implement backup strategies to protect your data.
+Security: Harden your system by configuring firewalls, user accounts, and file permissions.
+
+Part 3: Advanced Linux
+
+Kernel Customization
+
+Compiling a Custom Kernel: Build a kernel tailored to your specific needs.
+Configuring Kernel Modules: Load and unload kernel modules dynamically.
+Understanding Kernel Internals: Explore the inner workings of the Linux kernel.
+
+System Security
+
+Hardening Linux Systems: Implement security best practices to protect your system.
+Firewall Configuration: Configure firewalls (iptables, firewalld) to control network traffic.
+User Authentication and Authorization: Manage user accounts and permissions.
+
+Scripting with Python
+
+Automating Tasks: Write Python scripts to automate system tasks.
+Interacting with the System: Use Python libraries like subprocess and os to interact with the system.
+
+Virtualization
+
+Setting Up Virtual Machines: Create virtual machines using tools like VirtualBox and KVM.
+Containerization: Use Docker and Kubernetes to containerize applications.
+
+Cloud Computing
+
+Deploying Servers: Deploy servers on cloud platforms like AWS, GCP, and Azure.
+Managing Cloud Infrastructure: Configure and manage cloud resources.
+
+Practical Tips for Linux Mastery
+
+Practice Regularly: The more you use Linux, the better you'll become.
+Experiment and Learn: Don't be afraid to try new things.
+Join Online Communities: Seek help and share knowledge with other Linux users.
+Automate Tasks: Use scripts to save time and effort.
+Stay Updated: Keep your system and software up-to-date.
+
+Additional Resources
+
+Linux Documentation Project: https://www.kernel.org/doc/
+Ubuntu Documentation: https://help.ubuntu.com/
+Fedora Documentation: https://docs.fedoraproject.org/
+Debian Documentation: https://www.debian.org/doc/
+Online Tutorials and Forums: Numerous online resources offer tutorials, forums, and communities for Linux users.
+
+By following this guide and practicing regularly, you can become a proficient Linux user and unlock the full potential of this powerful operating system.
+
+
+100 Essential Linux Commands
+
+Here are 100 essential Linux commands that you should master:
+
+Basic Navigation and File Management
+
+1. cd: Change directory
+2. ls: List files and directories
+3. pwd: Print working directory
+4. mkdir: Make a directory
+5. rmdir: Remove a directory
+6. cp: Copy files or directories
+7. mv: Move or rename files or directories
+8. rm: Remove files or directories
+9. touch: Create an empty file
+10. cat: Concatenate and print files
+
+File Searching and Text Manipulation
+
+11. grep: Search for patterns in files
+12. sed: Stream editor for text manipulation
+13. awk: Text processing language
+14. find: Find files in a directory hierarchy
+15. locate: Quickly find files by name
+16. which: Locate a command
+17. whereis: Locate a command's binary file, source code, and manual page
+18. head: Display the first few lines of a file
+19. tail: Display the last few lines of a file
+20. sort: Sort lines of text
+
+File Compression and Archiving
+
+21. tar: Archive and compress files
+22. gzip: Compress files with gzip
+23. gunzip: Decompress gzip files
+24. bzip2: Compress files with bzip2
+25. bunzip2: Decompress bzip2 files
+26. zip: Create ZIP archives
+27. unzip: Extract ZIP archives
+
+User and Group Management
+
+28. useradd: Add a new user
+29. userdel: Delete a user
+30. passwd: Change a user's password
+31. usermod: Modify a user's information
+32. groupadd: Add a new group
+33. groupdel: Delete a group
+34. groupmod: Modify a group's information
+
+Process Management
+
+35. ps: List running processes
+36. top: Display system processes
+37. htop: Interactive process viewer
+38. kill: Kill a process
+39. killall: Kill all processes matching a name
+40. nice: Change a process's priority
+41. renice: Change a running process's priority
+
+Disk and File System Management
+
+42. df: Display disk usage
+43. du: Display disk usage by file and directory
+44. mount: Mount a file system
+45. umount: Unmount a file system
+46. fsck: Check and repair a file system
+47. mkfs: Create a new file system
+48. swapon: Activate a swap partition
+49. swapoff: Deactivate a swap partition
+
+Networking
+
+50. ifconfig: Configure network interfaces
+51. ip: Configure network interfaces (newer tool)
+52. ping: Test network connectivity
+53. nslookup: Query DNS servers
+54. netstat: Display network statistics
+55. ssh: Secure Shell for remote login
+56. scp: Secure Copy for transferring files
+57. wget: Download files from the internet
+58. curl: Transfer data using various protocols
+
+System Information and Logging
+
+59. uname: Print system information
+60. whoami: Print the current user's name
+61. date: Display the current date and time
+62. cal: Display a calendar
+63. free: Display system memory usage
+64. vmstat: Display system statistics
+65. last: Display recent logins
+66. lastb: Display failed login attempts
+67. dmesg: Display kernel ring buffer
+68. journalctl: View system logs
+
+Package Management
+
+69. apt: Package manager for Debian and Ubuntu
+70. yum: Package manager for Red Hat-based distributions
+71. dnf: Package manager for Fedora and newer Red Hat-based distributions
+72. rpm: Package manager for RPM-based packages
+
+Text Processing and Filtering
+
+73. cut: Cut out sections of a file
+74. paste: Merge lines of text
+75. tr: Translate characters
+76. uniq: Report or omit repeated lines
+77. diff: Compare files line by line
+78. comm: Compare sorted files line by line
+79. wc: Count words, lines, and characters
+
+System Services and Startup
+
+80. service: Manage system services (older systems)
+81. systemctl: Manage system services (systemd-based systems)
+82. chkconfig: Configure system services at boot time
+83. cron: Schedule tasks to run automatically
+84. at: Schedule one-time tasks
+
+Hardware Information and Monitoring
+
+85. lshw: List hardware information
+86. lspci: List PCI devices
+87. lsusb: List USB devices
+88. hdparm: Display hard drive information
+89. smartctl: Monitor hard drive health
+90. sar: System Activity Reporter
+
+User Interface and Terminal Customization
+
+91. less: Page through text files
+92. more: Page through text files
+93. history: Display command history
+94. alias: Create aliases for commands
+95. unalias: Remove aliases
+96. clear: Clear the terminal screen
+97. stty: Set terminal options
+
+Additional Tips
+
+Use the man command to get help for any command.
+Practice regularly to improve your skills.
+Experiment with different commands and options.
+Join online communities and forums to learn from others.
+Automate tasks with shell scripts.
+Stay updated with the latest Linux trends and technologies.
+
+By mastering these commands, you'll be well-equipped to navigate the Linux environment efficiently and effectively.
+
+
+Choosing the Best Linux Distribution for DevOps Engineers and System Administrators
+
+While the choice of Linux distribution often comes down to personal preference and specific project requirements, certain distributions are particularly well-suited for DevOps engineers and system administrators. Here are a few popular options:
+
+Ubuntu
+
+User-friendly: Known for its intuitive desktop environment and ease of use.
+Large Community: A vast community provides extensive support and resources.
+Widely Used: Popular in both personal and enterprise settings.
+Long-Term Support (LTS) Versions: Offer stable and secure environments for production systems.
+
+Debian
+
+Stable and Secure: A highly stable and secure distribution.
+Customizable: Highly customizable, allowing you to tailor it to your specific needs.
+Strong Community Support: A large and active community.
+Long-Term Support (LTS) Releases: Provides long-term support for critical systems.
+
+Fedora
+
+Cutting-Edge Technology: Often the first to adopt new technologies and features.
+Active Development: A rapidly evolving distribution with frequent updates.
+Strong Community: A passionate community of developers and users.
+Good for Testing and Experimentation: Ideal for testing new software and configurations.
+
+CentOS Stream
+
+Enterprise-Grade Stability: Built on the same codebase as Red Hat Enterprise Linux.
+Regular Updates: Receives frequent updates and security patches.
+Suitable for Production Environments: A reliable choice for production systems.
+
+Ultimately, the best Linux distribution for you will depend on your specific needs and preferences. Consider factors such as:
+
+Ease of Use: How user-friendly is the distribution?
+Security: How well-protected is the distribution against security threats?
+Stability: How reliable is the distribution?
+Community Support: How active is the community and how much support is available?
+Package Management: How easy is it to install and manage software?
+Customization: How customizable is the distribution?
+
+By carefully considering these factors, you can choose the Linux distribution that best suits your needs as a DevOps engineer or system administrator.
+</pre>
+
+      </div>
+    </section>
+
+    <!-- Docker Content -->
+    <section id="docker" class="topic">
+  <div class="card banner">
+    <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-label="Docker">
+      <circle cx="36" cy="36" r="34" fill="#2496ED"/>
+      <path d="M36 16c7 0 12 6 12 13 0 4-2 8-5 10 2 1 4 3 5 6 2 4 1 9-2 12-4 4-11 4-15 0-3-3-4-8-2-12 1-3 3-5 5-6-3-2-5-6-5-10 0-7 5-13 12-13z" fill="#fff"/>
+      <circle cx="31" cy="28" r="3" fill="#2496ED"/>
+      <circle cx="41" cy="28" r="3" fill="#2496ED"/>
+    </svg>
+    <div>
+      <h1>Docker</h1>
+      <div class="muted">Containerization, usage, and best practices</div>
+    </div>
+  </div>
+  <div class="card">
+    <pre>
+Docker: A Comprehensive Guide
+
+Introduction
+Docker is a powerful tool that revolutionizes the way we build, ship, and run applications. 
+It enables developers to package applications into standardized units called containers, which can be deployed on any platform. 
+This guide provides a comprehensive overview of Docker, covering core concepts, installation, usage, and advanced techniques.
+
+Core Concepts
+- Container: A standardized unit of software with code and dependencies.
+- Image: A read-only template for creating containers.
+- Dockerfile: Commands to assemble an image.
+- Docker Hub: Cloud registry for images.
+
+Installation
+Linux:
+1. sudo apt update
+2. sudo apt install docker-ce docker-ce-cli containerd.io
+3. sudo systemctl start docker
+
+macOS:
+1. Download Docker Desktop for Mac
+2. Install the package
+
+Windows:
+1. Download Docker Desktop for Windows
+2. Install the package
+
+Basic Usage
+1. docker run hello-world
+2. docker build -t my-image .
+3. docker images
+4. docker ps
+5. docker stop container_name
+6. docker rm container_name
+7. docker rmi image_name
+
+Docker Compose
+1. Create docker-compose.yml:
+   version: '3.8'
+   services:
+     web:
+       build: .
+       ports:
+         - "5000:5000"
+2. docker-compose up -d
+
+Advanced Usage
+- Docker Volumes: Persistent storage
+- Docker Networks: Container networking
+- Docker Swarm: Multi-host management
+- Docker Compose: Multi-container orchestration
+
+Best Practices
+- Use official images
+- Minimize image size
+- Multi-stage builds
+- Docker Compose for complex apps
+- Keep Docker up-to-date and secure
+
+Docker and Kubernetes
+- Orchestration
+- Deployment and scaling
+- Service discovery and load balancing
+- Self-healing containers
+- Rolling updates
+
+By following these best practices, you can leverage Docker for reliable containerized applications.
+    </pre>
+  </div>
+    </section>
+
+    <!-- Kubernetes Content -->
+    <section id="kubernetes" class="topic">
+      <div class="card banner">
+        
+<svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-label="Kubernetes">
+  <circle cx="36" cy="36" r="34" fill="#326ce5"/>
+  <polygon points="36,16 53,25 59,43 45,56 27,56 13,43 19,25" fill="#fff"/>
+  <circle cx="36" cy="36" r="6" fill="#326ce5"/>
+</svg>
+
+        <div>
+          <h1>Kubernetes</h1>
+          <div class="muted">Cluster orchestration, YAML, and best practices</div>
+        </div>
+      </div>
+      <div class="card">
+        <pre>
+Kubernetes: A Comprehensive Guide
+
+Introduction
+Kubernetes, often abbreviated as K8s, is an open-source platform for automating deployment, scaling, and management of containerized applications.
+It provides a robust framework for orchestrating containers, ensuring high availability, scalability, and efficient resource utilization.
+
+Core Concepts
+- Pod: The smallest deployable unit of computing, consisting of one or more containers.
+- Node: A worker machine that runs containerized applications.
+- Cluster: A group of nodes that work together to run containerized applications.
+- Service: An abstraction layer for a set of pods that provides a stable network endpoint.
+- Deployment: Manages the replication and updates of Pods.
+- ReplicaSet: Ensures a specified number of pod replicas.
+- Namespace: Isolates groups of resources within a cluster.
+
+Installation
+Kubernetes Installation Options:
+
+1. Kubernetes Distribution:
+   - Kubernetes: Install directly from the official documentation.
+   - Kubeadm: Tool for bootstrapping Kubernetes clusters.
+   - K3s: Lightweight Kubernetes distribution.
+   - Minikube: Local Kubernetes cluster for development/testing.
+
+2. Cloud-Based Kubernetes:
+   - Google Kubernetes Engine (GKE)
+   - Amazon Elastic Kubernetes Service (EKS)
+   - Azure Kubernetes Service (AKS)
+
+Basic Usage
+Basic Commands:
+- kubectl: Primary CLI for Kubernetes
+  - kubectl get pods
+  - kubectl get services
+  - kubectl get deployments
+  - kubectl run my-app --image my-image
+  - kubectl expose deployment my-app --type=NodePort
+
+Creating a Deployment:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: my-image
+        ports:
+        - containerPort: 8080
+
+Creating a Service:
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: my-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+
+Advanced Concepts
+- Kubernetes Networking:
+  - Service Mesh: Istio, Linkerd
+- Kubernetes Storage:
+  - Persistent Volumes
+  - Storage Classes
+- Kubernetes Security:
+  - Network Policies
+  - RBAC
+- Kubernetes Monitoring/Logging:
+  - Prometheus and Grafana
+  - ELK Stack
+
+Best Practices
+- Use official images
+- Minimize image size
+- Use ConfigMaps and Secrets
+- Implement network policies
+- Monitor cluster health
+- Automate deployments (Helm)
+- Backup and restore
+
+Advanced Kubernetes Concepts
+- Kubernetes Networking: Service, Ingress, Network Policies
+- Service Mesh: Istio, Linkerd
+- Kubernetes Storage: Persistent Volumes, Storage Classes
+- Kubernetes Security: Network Policies, RBAC, Pod Security Policies, Image Signing, Secret Management
+- Kubernetes Monitoring: Prometheus, Grafana, ELK Stack, Datadog
+- Kubernetes Cloud Providers: GKE, EKS, AKS
+- Kubernetes Best Practices: Operators, CRDs, CI/CD, Cluster monitoring, Security, Resource optimization, Backup/restore
+
+Practical Guide: Installation to Deployment
+
+Installation:
+1. Choose a Distribution: Kubernetes, Kubeadm, Managed Kubernetes (GKE/EKS/AKS)
+2. Install Kubernetes:
+   - Kubeadm: sudo apt install kubeadm kubelet kubectl
+     sudo kubeadm init
+     sudo kubeadm join <master-node-ip>:<port>
+   - Managed Kubernetes: follow cloud provider instructions
+
+Basic Usage:
+- Connect to Cluster: kubeconfig + kubectl
+- Create Namespace: kubectl create namespace my-app
+- Deploy Simple Application:
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: my-app
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        app: my-app
+    template:
+      metadata:
+        labels:
+          app: my-app
+      spec:
+        containers:
+        - name: my-app
+          image: my-image:latest
+          ports:
+          - containerPort: 8080
+- Apply Deployment: kubectl apply -f my-deployment.yaml
+- Expose Application:
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: my-service
+  spec:
+    selector:
+      app: my-app
+    ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+- Apply Service: kubectl apply -f my-service.yaml
+
+Advanced Usage:
+- Networking: Service Mesh (Istio/Linkerd), Ingress
+- Storage: Persistent Volumes, Storage Classes
+- Security: Network Policies, RBAC, PSPs
+- Monitoring/Logging: Prometheus, Grafana, ELK
+
+Best Practices:
+- Use official images
+- Minimize image size
+- ConfigMaps and Secrets
+- Network Policies
+- Monitor cluster health
+- Automate deployments (Helm)
+- Backup and restore
+
+Installing Kubernetes on Arch Linux:
+Prerequisites: Arch Linux system, sudo user, basic Linux knowledge
+
+Steps:
+1. Install packages: sudo pacman -Sy kubectl kubelet kubeadm containerd
+2. Initialize master node: sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+3. Configure kubectl:
+   mkdir -p $HOME/.kube
+   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   sudo chown $(id -u):$(id -g) $HOME/.kube/config
+4. Join worker nodes: sudo kubeadm join <master-node-ip>:<port>
+
+Basic Usage:
+- Check Cluster Status: kubectl cluster-info
+- Create Namespace: kubectl create namespace my-app
+- Deploy Application: create YAML file, kubectl apply -f my-deployment.yaml
+- Expose Application: create YAML file, kubectl apply -f my-service.yaml
+
+Additional Tips:
+- Use container registry
+- Configure network policies
+- Implement RBAC
+- Monitor cluster health
+- Automate deployments (Helm)
+- Consider managed Kubernetes service (GKE/EKS/AKS)
+
+</pre>
+
+      </div>
+    </section>
+
+    <!-- Jenkins Content -->
+    <section id="jenkins" class="topic">
+      <div class="card banner">
+        
+<svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-label="Jenkins">
+  <circle cx="36" cy="36" r="34" fill="#b33"/>
+  <rect x="20" y="20" width="32" height="32" rx="6" fill="#fff"/>
+  <path d="M28 28h16v4H28zm0 8h16v4H28zm0 8h10v4H28z" fill="#b33"/>
+</svg>
+
+        <div>
+          <h1>Jenkins</h1>
+          <div class="muted">CI/CD pipelines, plugins, and tips</div>
+        </div>
+      </div>
+      <div class="card">
+         <pre>
+A Comprehensive Guide to Jenkins: From Installation to Advanced Pipelines
+
+Understanding Jenkins
+Jenkins is an open-source automation server that helps automate building, testing, and deploying software projects.
+It is widely used for Continuous Integration and Continuous Delivery (CI/CD) pipelines.
+
+Installation (Ubuntu/Debian)
+1. Install Java:
+   sudo apt install default-jdk
+
+2. Install Jenkins:
+   Using package manager:
+   sudo apt install jenkins
+   Or using WAR file:
+   java -jar jenkins.war
+
+Initial Setup
+1. Open browser at http://localhost:8080
+2. Enter the initial admin password
+3. Install suggested plugins
+4. Create an admin user account
+
+Creating a Basic Pipeline
+1. Create a New Item -> choose "Pipeline"
+2. Pipeline Script:
+   pipeline {
+       agent any
+       stages {
+           stage('Build') {
+               steps {
+                   sh 'mvn clean package'
+               }
+           }
+           stage('Test') {
+               steps {
+                   sh 'mvn test'
+               }
+           }
+           stage('Deploy') {
+               steps {
+                   sh 'mvn deploy'
+               }
+           }
+       }
+   }
+3. Save and run the pipeline
+
+Advanced Pipeline Concepts
+- Pipeline Syntax: Learn the Groovy-based syntax for complex pipelines
+- Parallel Stages: Execute multiple stages concurrently
+- Parameterized Builds: Pass parameters to your pipeline
+- Input Steps: Allow user input during pipeline execution
+- Post-build Actions: Actions after a build, like notifications
+- Pipeline Libraries: Share common pipeline code across multiple jobs
+
+Jenkins Plugins
+- Blue Ocean: Modern user interface for Jenkins
+- Git Plugin: Integrate with Git repositories
+- GitHub Plugin: Integrate with GitHub
+- Email Extension Plugin: Send email notifications
+- Slack Notification Plugin: Send notifications to Slack
+- Kubernetes Plugin: Deploy to Kubernetes clusters
+
+Best Practices
+- Organize Your Jobs: Use folders to organize your jobs
+- Leverage Pipeline Libraries: Share common code
+- Implement Security: Use strong passwords, role-based access control, and security plugins
+- Monitor Your Pipelines: Use Jenkins built-in monitoring tools or third-party plugins
+- Automate Everything: From building to deployment
+- Continuous Improvement: Regularly review and improve pipelines
+
+Additional Tips
+- Use Jenkinsfile: Define pipeline as code
+- Leverage Shared Libraries: Share common code and libraries
+- Integrate with Other Tools: Docker, Ansible, Terraform
+- Consider Cloud-Based Jenkins: Jenkins X or CloudBees for easier setup
+
+Installing and Using Jenkins on Arch Linux
+
+Installation
+1. Install Java:
+   sudo pacman -Sy jdk-openjdk
+
+2. Install Jenkins:
+   sudo pacman -Sy jenkins
+
+3. Start and Enable Jenkins:
+   sudo systemctl start jenkins
+   sudo systemctl enable jenkins
+
+Initial Setup
+1. Open browser at http://localhost:8080
+2. Enter the initial admin password
+3. Install suggested plugins
+4. Create an admin user account
+
+Creating a Basic Pipeline
+1. Create a New Item -> choose "Pipeline"
+2. Pipeline Script:
+   pipeline {
+       agent any
+       stages {
+           stage('Build') {
+               steps {
+                   sh 'mvn clean package'
+               }
+           }
+           stage('Test') {
+               steps {
+                   sh 'mvn test'
+               }
+           }
+           stage('Deploy') {
+               steps {
+                   sh 'mvn deploy'
+               }
+           }
+       }
+   }
+3. Save and run the pipeline
+
+Advanced Pipeline Concepts
+- Pipeline Syntax: Groovy-based complex pipelines
+- Parallel Stages: Execute stages concurrently
+- Parameterized Builds: Pass parameters
+- Input Steps: User input during execution
+- Post-build Actions: Notifications
+- Pipeline Libraries: Share code across jobs
+
+Jenkins Plugins
+- Blue Ocean: Modern UI
+- Git Plugin: Git integration
+- GitHub Plugin: GitHub integration
+- Email Extension Plugin: Email notifications
+- Slack Notification Plugin: Slack notifications
+- Kubernetes Plugin: Kubernetes deployment
+
+Best Practices
+- Organize Jobs
+- Leverage Pipeline Libraries
+- Implement Security
+- Monitor Pipelines
+- Automate Everything
+- Continuous Improvement
+
+Additional Tips
+- Use Jenkinsfile
+- Leverage Shared Libraries
+- Integrate with Docker, Ansible, Terraform
+- Consider Cloud-Based Jenkins
+</pre>
+
+      </div>
+    </section>
+
+   <!-- AWS Content -->
+    <section id="aws" class="topic">
+  <div class="card banner">
+    <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-label="AWS">
+      <circle cx="36" cy="36" r="34" fill="#FF9900"/>
+      <path d="M36 16c7 0 12 6 12 13 0 4-2 8-5 10 2 1 4 3 5 6 2 4 1 9-2 12-4 4-11 4-15 0-3-3-4-8-2-12 1-3 3-5 5-6-3-2-5-6-5-10 0-7 5-13 12-13z" fill="#fff"/>
+      <circle cx="31" cy="28" r="3" fill="#FF9900"/>
+      <circle cx="41" cy="28" r="3" fill="#FF9900"/>
+    </svg>
+    <div>
+      <h1>AWS</h1>
+      <div class="muted">Cloud computing services, use cases, and best practices</div>
+    </div>
+  </div>
+  <div class="card">
+    <pre>
+A Comprehensive Guide to AWS
+
+Introduction
+Amazon Web Services (AWS) is a comprehensive cloud computing platform offering storage, computing, databases, machine learning, and more.
+
+Core AWS Services
+Compute Services
+- Amazon EC2: Scalable computing capacity.
+- AWS Lambda: Serverless computing service.
+
+Storage Services
+- Amazon S3: Object storage.
+- Amazon EBS: Block storage for EC2.
+- Amazon Glacier: Low-cost archival storage.
+
+Database Services
+- Amazon RDS: Managed relational databases.
+- Amazon DynamoDB: Fully managed NoSQL database.
+- Amazon Redshift: Managed data warehouse.
+
+Networking & Content Delivery
+- Amazon VPC: Private cloud network.
+- Amazon Route 53: DNS service.
+- Amazon CloudFront: Global content delivery network.
+
+Developer Tools
+- AWS CodeCommit: Source control service.
+- AWS CodePipeline: Continuous delivery service.
+- AWS CodeBuild: Continuous integration service.
+
+Getting Started
+1. Create an AWS account.
+2. Install and configure AWS CLI.
+3. Explore AWS Management Console.
+
+Core Concepts
+- Regions & Availability Zones: Geographical distribution of resources.
+- Security Groups: Virtual firewalls for EC2.
+- IAM: Manage user access.
+- AWS Cost Explorer: Monitor usage and costs.
+
+Common Use Cases
+- Web Applications: EC2, S3, Route 53.
+- Mobile Apps: AWS Mobile Hub.
+- Big Data Analytics: EMR, Redshift.
+- Machine Learning: SageMaker.
+- IoT: AWS IoT Core.
+
+Best Practices
+- Configure Security Groups properly.
+- Use IAM roles with least privilege.
+- Optimize costs via AWS Cost Explorer.
+- Backup & recovery planning.
+- Monitor resources using CloudWatch.
+
+Advanced Topics
+- Serverless computing: Lambda + API Gateway.
+- Container orchestration: Fargate or EKS.
+- ML & AI: SageMaker.
+- Data Analytics: Redshift, EMR, Glue.
+
+Additional AWS Services
+- Storage: S3 Glacier Deep Archive, EFS, FSx.
+- Databases: DocumentDB, Neptune, Timestream, QLDB.
+- Analytics: Athena, Kinesis, EMR, SageMaker.
+- Mobile & IoT: Mobile Hub, IoT Core, IoT Device Defender.
+- Security & Compliance: IAM, KMS, WAF, Shield.
+- Migration & Transfer: DMS, Snow Family.
+- Management & Governance: CloudFormation, Config, Systems Manager.
+
+Advanced Use Cases
+- Serverless Computing: Real-time data, backend services, microservices.
+- ML & AI: Training & deployment, computer vision, NLP, personalization.
+- Data Analytics & Big Data: Data warehousing, data lakes, real-time analytics.
+- Security & Compliance: IAM roles, security groups, WAF, Shield, Config.
+
+AWS Best Practices
+- Security Groups and IAM roles.
+- Cost optimization & monitoring.
+- Backup and disaster recovery.
+- High availability across AZs.
+- Automation with CloudFormation & Systems Manager.
+- Follow AWS Well-Architected Framework.
+- Explore AWS Marketplace.
+- Experiment, learn, and stay updated.
+    </pre>
+  </div>
+    </section>
+
+    <div class="footer">Soliman Ali• Offline-ready single HTML file</div>
+  </main>
+  <script src="/js/script.js"></script>
+</body>
+</html>
