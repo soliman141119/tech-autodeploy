@@ -111,7 +111,7 @@ resource "aws_security_group" "allow_web" {
 # Key Pair
 #############################################
 resource "aws_key_pair" "soly" {
-  key_name   = "soly"
+  key_name   = "tr"
   public_key = var.public_key
 }
 
