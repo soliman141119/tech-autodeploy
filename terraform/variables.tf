@@ -13,3 +13,8 @@ variable "ami" {
 variable "key_path" {
   default = "/home/soliman/.ssh/soly.pub"
 }
+
+variable "public_key" {
+  description = "SSH public key for EC2 instances"
+  type        = string
+}
