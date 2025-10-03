@@ -1,0 +1,58 @@
+- hosts: docker_hosts
+  become: yes
+  tasks:
+    - name: Update apt packages
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+
+    - name: Install required packages
+      apt:
+        name: 
+          - docker.io
+          - python3-pip
+        state: present
+
+    - name: Add ubuntu user to docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Install Docker Python module (for Ansible docker support)
+      pip:
+        name: docker
+        executable: pip3
+
+    - name: Ensure Docker service is started and enabled
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Pull Node.js app image from Docker Hub
+      docker_image:
+        name: soliman14/nodejs-app
+        tag: V1
+        source: pull
+
+    - name: Stop old container if exists
+      docker_container:
+        name: nodeapp
+        state: stopped
+      ignore_errors: yes
+
+    - name: Remove old container if exists
+      docker_container:
+        name: nodeapp
+        state: absent
+      ignore_errors: yes
+
+    - name: Run Node.js app container
+      docker_container:
+        name: nodeapp
+        image: soliman14/nodejs-app:V1
+        state: started
+        restart_policy: always
+        published_ports:
+          - "80:3000"
