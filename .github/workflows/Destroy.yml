@@ -1,0 +1,28 @@
+name: Destroy Infrastructure - Tech Autodeploy
+
+on:
+  workflow_dispatch:   # Manual trigger
+
+jobs:
+  terraform-destroy:
+    name: Terraform Destroy Infrastructure
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
