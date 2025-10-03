@@ -112,7 +112,7 @@ resource "aws_security_group" "allow_web" {
 #############################################
 resource "aws_key_pair" "soly" {
   key_name   = "soly"
-  public_key = file("~/.ssh/soly.pub")
+  public_key = var.public_key
 }
 
 #############################################
