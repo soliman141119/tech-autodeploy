@@ -146,14 +146,14 @@ resource "aws_instance" "instance2" {
 # Load Balancer
 #############################################
 resource "aws_lb" "app_lb" {
-  name               = "nodejs-app-lb"
+  name               = "nodejs-app-lb1"
   load_balancer_type = "application"
   subnets            = [aws_subnet.subnet1.id, aws_subnet.subnet2.id]
   security_groups    = [aws_security_group.allow_web.id]
 }
 
 resource "aws_lb_target_group" "app_tg" {
-  name     = "nodejs-target-group"
+  name     = "nodejs-target-group1"
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
