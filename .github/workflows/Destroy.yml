@@ -1,67 +1,71 @@
-name: CI/CD Pipeline - Tech Autodeploy 22
+name: CI/CD Pipeline - Tech Autodeploy
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # 👈 Trigger manually from GitHub Actions UI
 
 jobs:
-  deploy-ansible:
-    name: Deploy Infrastructure & Configure with Ansible
+  deploy:
+    name: Terraform Deploy & Ansible Configuration
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: terraform
 
     steps:
-      # 1️⃣ Checkout repository
+      # -------------------
+      # 1️⃣ Checkout Code
+      # -------------------
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # -------------------
       # 2️⃣ Setup Terraform
+      # -------------------
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
-      # 3️⃣ Terraform Init
       - name: Terraform Init
+        working-directory: terraform
         run: terraform init
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      # 4️⃣ Terraform Validate
       - name: Terraform Validate
+        working-directory: terraform
         run: terraform validate
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      # 5️⃣ Terraform Plan
       - name: Terraform Plan
+        working-directory: terraform
         run: terraform plan -out=tfplan
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      # 6️⃣ Terraform Apply (provisions infra)
       - name: Terraform Apply
+        working-directory: terraform
         run: terraform apply -auto-approve tfplan
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      # 7️⃣ Install Ansible & Dependencies
+      # -------------------
+      # 3️⃣ Ansible Setup
+      # -------------------
       - name: Install Ansible & Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y ansible python3-pip sshpass
 
-      # 8️⃣ Create private key inside ansible folder
       - name: Add Private Key
         run: |
-          mkdir -p ../ansible
-          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > ../ansible/private_key.pem
-          chmod 600 ../ansible/private_key.pem
+          mkdir -p ansible
+          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > ansible/private_key.pem
+          chmod 600 ansible/private_key.pem
 
-      # 9️⃣ Run Ansible Playbook
+      # -------------------
+      # 4️⃣ Run Ansible Playbook
+      # -------------------
       - name: Run Ansible Playbook
-        working-directory: ../ansible
+        working-directory: ansible
         run: ansible-playbook -i ../inventory.ini playbook.yml
