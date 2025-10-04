@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Tech Autodeploy v23
+name: CI/CD Pipeline - Tech Autodeploy 22
 
 on:
   workflow_dispatch:
@@ -12,9 +12,11 @@ jobs:
         working-directory: terraform
 
     steps:
+      # Checkout code
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Terraform setup
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
@@ -42,6 +44,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+      # Ansible setup
       - name: Install Ansible & Dependencies
         run: |
           sudo apt-get update
@@ -49,19 +52,10 @@ jobs:
 
       - name: Add Private Key
         run: |
-          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
+          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > ansible/private_key.pem
+          chmod 600 ansible/private_key.pem
 
+      # Run Ansible Playbook
       - name: Run Ansible Playbook
-        run: |
-          cd ../ansible
-          ansible-playbook -i ../inventory.ini playbook.yml
-
-      - name: Wait 10 Minutes
-        run: sleep 600
-
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        working-directory: ./ansible
+        run: ansible-playbook -i inventory.ini playbook.yml
