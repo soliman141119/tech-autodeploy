@@ -1,21 +1,22 @@
 - hosts: docker_hosts
   become: yes
   tasks:
-    - name: Update apt packages
-      apt:
+    - name: Update all packages
+      yum:
+        name: "*"
+        state: latest
         update_cache: yes
-        force_apt_get: yes
 
     - name: Install required packages
-      apt:
-        name: 
-          - docker.io
+      yum:
+        name:
+          - docker
           - python3-pip
         state: present
 
-    - name: Add ubuntu user to docker group
+    - name: Add ec2-user to docker group
       user:
-        name: ubuntu
+        name: ec2-user
         groups: docker
         append: yes
 
