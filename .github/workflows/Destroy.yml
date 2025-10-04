@@ -1,20 +1,26 @@
-name: Destroy Infrastructure - Tech Autodeploy
+name: CI/CD Pipeline - Tech Autodeploy
 
 on:
-  workflow_dispatch:   # Manual trigger
+  workflow_dispatch:   # Manual trigger from GitHub Actions UI
 
 jobs:
-  terraform-destroy:
-    name: Terraform Destroy Infrastructure
+  deploy-and-destroy:
+    name: Deploy, Ansible, Wait, Destroy
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: terraform
 
     steps:
+      # -------------------
+      # 1️⃣ Checkout Code
+      # -------------------
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # -------------------
+      # 2️⃣ Setup Terraform
+      # -------------------
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
@@ -29,8 +35,46 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  
 
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # -------------------
+      # 3️⃣ Ansible Deploy
+      # -------------------
+      - name: Install Ansible & Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible python3-pip sshpass
+
+      - name: Add Private Key
+        run: |
+          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+
+      - name: Run Ansible Playbook
+        run: |
+          cd ansible
+          ansible-playbook -i ../inventory.ini playbook.yml
+
+      # -------------------
+      # 4️⃣ Wait 10 Minutes
+      # -------------------
+      - name: Wait 10 Minutes
+        run: sleep 600
+
+      # -------------------
+      # 5️⃣ Terraform Destroy
+      # -------------------
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         env:
