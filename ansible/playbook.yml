@@ -1,59 +1,16 @@
 - hosts: docker_hosts
   become: yes
   tasks:
-    - name: Update all packages
-      yum:
-        name: "*"
-        state: latest
-        update_cache: yes
-
-    - name: Install required packages
-      yum:
-        name:
-          - docker
-          - python3-pip
-        state: present
-
-    - name: Add ec2-user to docker group
-      user:
-        name: ec2-user
-        groups: docker
-        append: yes
-
-    - name: Install Docker Python module (for Ansible docker support)
-      pip:
-        name: docker
-        executable: pip3
-
-    - name: Ensure Docker service is started and enabled
-      service:
-        name: docker
-        state: started
-        enabled: true
-
-    - name: Pull Node.js app image from Docker Hub
-      docker_image:
-        name: soliman14/nodejs-app
-        tag: V1
-        source: pull
-
-    - name: Stop old container if exists
-      docker_container:
-        name: nodeapp
-        state: stopped
-      ignore_errors: yes
-
-    - name: Remove old container if exists
-      docker_container:
-        name: nodeapp
-        state: absent
-      ignore_errors: yes
-
-    - name: Run Node.js app container
-      docker_container:
-        name: nodeapp
-        image: soliman14/nodejs-app:V1
-        state: started
-        restart_policy: always
-        published_ports:
-          - "80:3000"
+    - name: Setup Docker and deploy Node.js app in one go
+      shell: |
+        yum update -y && \
+        yum install -y docker python3-pip && \
+        usermod -aG docker ec2-user && \
+        pip3 install docker --ignore-installed && \
+        systemctl enable docker && \
+        systemctl start docker && \
+        docker pull soliman14/nodejs-app:V1 && \
+        docker stop nodeapp 2>/dev/null || true && \
+        docker rm nodeapp 2>/dev/null || true && \
+        docker run -d --name nodeapp --restart always -p 80:3000 soliman14/nodejs-app:V1 && \
+        docker ps
