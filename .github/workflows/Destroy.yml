@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Tech Autodeploy
+name: CI/CD Pipeline - Tech Autodeploy v1
 
 on:
   workflow_dispatch:   # Manual trigger from GitHub Actions UI
