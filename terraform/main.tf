@@ -211,7 +211,7 @@ resource "local_file" "ansible_cfg" {
   content = <<EOT
 [defaults]
 inventory = ../inventory.ini
-remote_user = ubuntu
+remote_user = ec2-user
 private_key_file = private_key.pem
 host_key_checking = False
 EOT
