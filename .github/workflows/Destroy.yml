@@ -58,10 +58,10 @@ jobs:
           sudo apt-get install -y ansible python3-pip sshpass
 
       - name: Add Private Key
+        working-directory: ansible
         run: |
-          mkdir -p ansible
-          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > ansible/private_key.pem
-          chmod 600 ansible/private_key.pem
+          echo "${{ secrets.ANSIBLE_PRIVATE_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
 
       # -------------------
       # 4️⃣ Run Ansible Playbook
