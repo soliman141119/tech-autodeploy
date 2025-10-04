@@ -54,7 +54,7 @@ jobs:
 
       - name: Run Ansible Playbook
         run: |
-          cd ansible
+          cd ../ansible
           ansible-playbook -i ../inventory.ini playbook.yml
 
       - name: Wait 10 Minutes
