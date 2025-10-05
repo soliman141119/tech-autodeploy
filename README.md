@@ -187,6 +187,11 @@ Open this URL in your browser — your app is live 🎉
 | Application Stack | Node.js + Express |
 | Cloud Provider | AWS (EC2, VPC, ALB) |
 
+## 🎥 Project Demo
+
+[![Watch the video](https://img.icons8.com/clouds/500/video.png)](https://drive.google.com/file/d/180vZAtzT9nbsUh7uufe2KN6Te3hhzWmr/view?usp=drive_link)
+> Click the image to watch the full demo on Google Drive 🎬
+
 
 ## 👨‍💻 Author
 
