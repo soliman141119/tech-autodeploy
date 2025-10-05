@@ -10,6 +10,8 @@ This project demonstrates end-to-end automation for deploying a Node.js web appl
 
 With one pipeline run, your full AWS environment and application go live automatically 🌍
 
+<img width="1669" height="643" alt="image" src="https://github.com/user-attachments/assets/c5085379-fd0b-49bf-97ad-ebad47932146" />
+
 ---
 
 ## 🏗️ Project Architecture
