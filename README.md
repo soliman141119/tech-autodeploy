@@ -189,7 +189,7 @@ Open this URL in your browser — your app is live 🎉
 
 ## 🎥 Project Demo
 
-[![Watch the video](https://img.icons8.com/clouds/500/video.png)](https://drive.google.com/file/d/180vZAtzT9nbsUh7uufe2KN6Te3hhzWmr/view?usp=drive_link)
+[![Watch the video]](https://drive.google.com/file/d/180vZAtzT9nbsUh7uufe2KN6Te3hhzWmr/view?usp=drive_link)
 > Click the image to watch the full demo on Google Drive 🎬
 
 
